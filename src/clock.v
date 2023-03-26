@@ -1,6 +1,8 @@
 // Generate the system clock based on in incoming
 // clock. Stop clock if halt signal is high.
 
+`default_nettype none
+
 module clock
 (
   // Control signals
@@ -22,11 +24,11 @@ always @(posedge i_clk) begin
 
     clockCounter = clockCounter + 1;
     if (clockCounter == WAIT_TIME) begin
-      o_clk = ~o_clk;
-      clockCounter = 0;
+      o_clk <= ~o_clk;
+      clockCounter <= 0;
     end
   end else begin
-    o_clk = 1'b0;
+    o_clk <= 1'b0;
   end
 end
 endmodule

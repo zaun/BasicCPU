@@ -1,5 +1,7 @@
 // Defines for the CPU's ABI
 
+`default_nettype none
+
 `define OPCODE_NOP  4'b0000 // No Operation
 `define OPCODE_LDA  4'b0001 // Load content of mem into A reg
 `define OPCODE_LDB  4'b0010 // Load content of mem into B reg

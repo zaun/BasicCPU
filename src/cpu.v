@@ -2,11 +2,13 @@
 // Registers A and B are tied to the ALU.
 // Output is displayed on a set of LEDs
 
+`default_nettype none
+
 module cpu
 (
-    input i_clk,
-    input i_reset,
-    output [5:0] led
+    input wire i_clk,
+    input wire i_reset,
+    output wire [5:0] led
 );
 
   wire [7:0] bus;
@@ -30,7 +32,6 @@ module cpu
   wire programcounter_read_n;
   wire programcounter_write_n;
   wire programcounter_inc_n;
-  wire [7:0] programcounter_internal;
 
   wire alu_read_n;
   wire alu_subtract;
@@ -80,8 +81,7 @@ module cpu
     .i_read_n(programcounter_read_n),
     .i_write_n(programcounter_write_n),
     .i_inc_n(programcounter_inc_n),
-    .io_bus(bus),
-    .internal_data(programcounter_internal)
+    .io_bus(bus)
   );
 
   register register_mem
